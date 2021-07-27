@@ -1,0 +1,13 @@
+Seance workflow:
+0) make sure seance_spotter.py is in pyvex/lifting/gym if you're going to be working with kernel code
+1) edit seance_batch.py to ignore any files you do not want to analyze, if you plan on analyzing multiple binaries at once.
+2) 'python seance_batch.py [symbol file]' where symbol file is a text file containing the names of symbols you want to analyze. /
+    Alternately, 'python seance.py -s [symbol] -b [binary]' (or whichever command line options suit your needs) if you only want /
+    to analyze one binary.
+3) edit seance_db.py to ignore any outputs you do not want in the database. If you do not want any outputs ignored, set the /
+    'test' array to []
+4) 'python seance_db.py' to generate a database based on the analyzed files.
+5) edit seance_batch_comp.py to have the correct test set, i.e. that the 'test' is a list of files you're testing against your database.
+6) 'python seance_batch_comp.py [dir]' to compare multiple outputs to the database, or 'python seance_check.py [source file] [target directory]' for /
+    a single check, where 'source file' is the file you want to compare to the db, and 'target directory' contains the database file. The / 
+    latter prints to the command line, while the former prints to "dir/[fname]_emu_out/[fname].results
